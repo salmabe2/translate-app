@@ -1,0 +1,23 @@
+{
+	"bracketSpacing": true,
+	"bracketSameLine": true,
+	"semi": true,
+	"singleQuote": true,
+	"printWidth": 80,
+	"trailingComma": "all",
+	"tabWidth": 2,
+	"useTabs": true,
+	"singleAttributePerLine": true,
+	"proseWrap": "always",
+	"quoteProps": "as-needed",
+	"arrowParens": "always",
+  "htmlWhitespaceSensitivity": "ignore",
+	"overrides": [
+		{
+			"files": "*.html",
+			"options": {
+				"parser": "angular"
+			}
+		}
+	]
+}
