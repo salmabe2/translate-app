@@ -8,7 +8,7 @@ import {
 	ViewChild,
 } from '@angular/core';
 
-import { DropdownMenuItem } from '../../interfaces/dropdown.interface';
+import { DropdownMenuItem } from '@shared/interfaces/dropdown.interface';
 
 @Component({
 	selector: 'app-dropdown',

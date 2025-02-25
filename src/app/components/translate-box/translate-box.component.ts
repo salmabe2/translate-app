@@ -2,7 +2,6 @@ import {
 	booleanAttribute,
 	Component,
 	input,
-	linkedSignal,
 	model,
 	OnDestroy,
 	OnInit,
@@ -10,8 +9,8 @@ import {
 } from '@angular/core';
 import { debounceTime, Subject, Subscription } from 'rxjs';
 
-import { DropdownMenuItem } from '../../shared/interfaces/dropdown.interface';
-import { DropdownComponent } from '../../shared/components/dropdown/dropdown.component';
+import { DropdownMenuItem } from '@shared/interfaces/dropdown.interface';
+import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
 
 @Component({
 	selector: 'app-translate-box',

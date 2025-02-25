@@ -1,22 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { TranslationResponse } from '../interfaces/translate.interface';
+import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
-// interface State {
-// 	translationSource: string;
-// 	translatedText: string;
-// }
+import { TranslationResponse } from '@interfaces/translate.interface';
 
 @Injectable({ providedIn: 'root' })
 export class TranslateService {
 	private http = inject(HttpClient);
 	private baseUrl: string = 'https://api.mymemory.translated.net';
-
-	// #state = signal<State>({
-	// 	translationSource: '',
-	// 	translatedText: '',
-	// });
 
 	constructor() {}
 

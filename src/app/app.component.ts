@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 
 import { TranslateBoxComponent } from './components/translate-box/translate-box.component';
-import { TranslateService } from './services/translate.service';
-import { DropdownMenuItem } from './shared/interfaces/dropdown.interface';
+import { TranslateService } from '@services/translate.service';
+import { DropdownMenuItem } from '@shared/interfaces/dropdown.interface';
 @Component({
 	selector: 'app-root',
 	imports: [TranslateBoxComponent],
@@ -34,7 +34,6 @@ export class AppComponent {
 		this.translateService
 			.translateText(text, this.sourceLang.value, this.targetLang.value)
 			.subscribe((res) => {
-				console.log(res);
 				this.translatedText = res;
 			});
 	}
