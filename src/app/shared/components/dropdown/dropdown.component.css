@@ -1,0 +1,31 @@
+@reference "../../../../styles.css";
+
+/*
+For some reason this path does not work
+@reference "./src/styles.css";
+*/
+
+.dropdown__button {
+	@apply text-base font-bold px-4 py-2 cursor-pointer flex items-center rounded bg-pink-100;
+}
+
+.dropdown__button:hover,
+.dropdown__button--opened {
+	@apply bg-pink-200;
+}
+
+.dropdown__menu {
+	@apply hidden absolute bg-pink-200 p-2 rounded text-slate-800;
+}
+
+.dropdown__menu--opened {
+	@apply block;
+}
+
+.dropdown__menu ul li {
+	@apply cursor-pointer px-3 py-1;
+}
+
+.dropdown__menu ul li:hover {
+	@apply bg-pink-300 rounded;
+}

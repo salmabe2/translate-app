@@ -1,0 +1,5 @@
+@reference "../styles.css";
+
+.wrapper {
+	@apply flex items-center gap-4 p-4 flex-col xl:flex-row xl:justify-center xl:h-screen;
+}
