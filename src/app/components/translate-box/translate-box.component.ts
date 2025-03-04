@@ -11,10 +11,11 @@ import { debounceTime, Subject, Subscription } from 'rxjs';
 
 import { DropdownMenuItem } from '@shared/interfaces/dropdown.interface';
 import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
+import { CopyTextButtonComponent } from '@shared/components/copy-text-button/copy-text-button.component';
 
 @Component({
 	selector: 'app-translate-box',
-	imports: [DropdownComponent],
+	imports: [DropdownComponent, CopyTextButtonComponent],
 	templateUrl: './translate-box.component.html',
 	styleUrl: './translate-box.component.css',
 })

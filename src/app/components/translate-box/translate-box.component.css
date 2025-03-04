@@ -1,4 +1,4 @@
-@reference "../../../styles.css";
+@reference "tailwindcss";
 
 .translate-box {
 	@apply bg-white rounded-2xl h-[360px] w-[600px] p-6 flex flex-col;

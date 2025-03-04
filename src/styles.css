@@ -2,5 +2,21 @@
 @import 'tailwindcss';
 
 body {
-  @apply bg-slate-300;
+	background-color: theme('colors.slate.300');
+}
+
+@layer components {
+	.tooltip {
+		position: absolute;
+		top: -2rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: theme('colors.slate.400');
+		color: theme('colors.white');
+		font-size: theme('fontSize.sm');
+		padding: theme('spacing.1') theme('spacing.2');
+		border-radius: theme('borderRadius.md');
+		opacity: 1;
+		transition: opacity theme('transitionDuration.300') ease-in-out;
+	}
 }

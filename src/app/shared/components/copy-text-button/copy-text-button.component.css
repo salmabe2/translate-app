@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+button {
+	@apply bg-pink-200 rounded-lg p-2 text-white font-bold cursor-pointer;
+}
