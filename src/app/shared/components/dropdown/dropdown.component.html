@@ -3,9 +3,9 @@
 	class="dropdown">
 	<button
 		class="dropdown__button"
-		[ngClass]="{ 'dropdown__button--opened': isDropdownOpen }"
-		(click)="isDropdownOpen = !isDropdownOpen">
-		{{ value()?.description ? value()?.description : placeholder() }}
+		[ngClass]="{ 'dropdown__button--opened': isDropdownOpen() }"
+		(click)="isDropdownOpen.set(!isDropdownOpen())">
+		{{ value()?.description ?? placeholder() }}
 		<svg
 			class="ml-2"
 			width="20px"
@@ -19,7 +19,7 @@
 		</svg>
 	</button>
 	<div
-		[ngClass]="{ 'dropdown__menu--opened': isDropdownOpen }"
+		[ngClass]="{ 'dropdown__menu--opened': isDropdownOpen() }"
 		class="dropdown__menu">
 		<ul>
 			@for (item of menu(); track $index) {

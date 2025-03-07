@@ -1,8 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 
 import { TranslateBoxComponent } from './components/translate-box/translate-box.component';
 import { TranslateService } from '@services/translate.service';
 import { DropdownMenuItem } from '@shared/interfaces/dropdown.interface';
+import { of } from 'rxjs';
 @Component({
 	selector: 'app-root',
 	imports: [TranslateBoxComponent],
@@ -13,28 +15,39 @@ export class AppComponent {
 	private translateService = inject(TranslateService);
 
 	/** Source text input by the user */
-	public sourceText: string = '';
+	public sourceText = signal<string>('');
 
 	/** Translated text output */
-	public translatedText: string = '';
+	public translatedText = signal<string>('');
 
-	public sourceLang: DropdownMenuItem = { description: 'English', value: 'en' };
-	public targetLang: DropdownMenuItem = { description: 'Italian', value: 'it' };
+	public sourceLang = signal<DropdownMenuItem>({
+		description: 'English',
+		value: 'en',
+	});
 
-	/**
-	 * Translates the given text using the selected languages.
-	 * @param text - The text to be translated
-	 */
-	public translateText(text: string): void {
-		if (text === '') {
-			this.translatedText = '';
-			return;
-		}
+	public targetLang = signal<DropdownMenuItem>({
+		description: 'Italian',
+		value: 'it',
+	});
 
-		this.translateService
-			.translateText(text, this.sourceLang.value, this.targetLang.value)
-			.subscribe((res) => {
-				this.translatedText = res;
-			});
-	}
+	translatedTextResource = rxResource({
+		request: () => ({
+			text: this.sourceText(),
+			sourceLang: this.sourceLang().value,
+			targetLang: this.targetLang().value,
+		}),
+		loader: ({ request }) => {
+			const { text, sourceLang, targetLang } = request;
+
+			if (!text) {
+				this.translatedText.set('');
+			}
+
+			if (!text || !sourceLang || !targetLang) {
+				return of('');
+			}
+
+			return this.translateService.translateText(text, sourceLang, targetLang);
+		},
+	});
 }

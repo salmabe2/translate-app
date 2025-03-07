@@ -4,19 +4,17 @@ import { map, Observable } from 'rxjs';
 
 import { TranslationResponse } from '@interfaces/translate.interface';
 
+const baseUrl: string = 'https://api.mymemory.translated.net';
 @Injectable({ providedIn: 'root' })
 export class TranslateService {
 	private http = inject(HttpClient);
-	private baseUrl: string = 'https://api.mymemory.translated.net';
-
-	constructor() {}
 
 	translateText(
 		text: string,
 		sourceLang: string,
 		targetLang: string,
 	): Observable<string> {
-		const url: string = `${this.baseUrl}/get?q=${text}&langpair=${sourceLang}|${targetLang}`;
+		const url: string = `${baseUrl}/get?q=${text}&langpair=${sourceLang}|${targetLang}`;
 
 		return this.http
 			.get<TranslationResponse>(url)
@@ -27,6 +25,4 @@ export class TranslateService {
 				),
 			);
 	}
-
-	getAllLanguages() {}
 }

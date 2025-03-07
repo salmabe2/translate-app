@@ -1,7 +1,7 @@
 <button
 	(click)="onCopyClick()"
 	class="relative group">
-	@if (isCopied) {
+	@if (isCopied()) {
 	<span class="tooltip">Copied!</span>
 	}
 	<svg

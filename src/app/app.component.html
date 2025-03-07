@@ -1,12 +1,10 @@
 <div class="wrapper">
 	<app-translate-box
 		source
-		(onTranslation)="translateText($event)"
-		(onLanguageSelect)="translateText(sourceText)"
-		[(textValue)]="sourceText"
-		[(lang)]="sourceLang" />
+    [textInput]="sourceText()"
+		(onTextChange)="sourceText.set($event)"
+		(onLanguageSelect)="sourceLang.set($event)" />
 	<app-translate-box
-		[(lang)]="targetLang"
-		[textValue]="translatedText"
-		(onLanguageSelect)="translateText(sourceText)" />
+		[textInput]="translatedTextResource.value() ?? ''"
+		(onLanguageSelect)="targetLang.set($event)" />
 </div>

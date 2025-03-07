@@ -5,6 +5,7 @@ import {
 	input,
 	model,
 	output,
+	signal,
 	ViewChild,
 } from '@angular/core';
 
@@ -17,7 +18,7 @@ import { DropdownMenuItem } from '@shared/interfaces/dropdown.interface';
 	styleUrl: './dropdown.component.css',
 })
 export class DropdownComponent {
-	public isDropdownOpen: boolean = false;
+	public isDropdownOpen = signal<boolean>(false);
 
 	public label = input.required<string>();
 	public menu = input.required<DropdownMenuItem[]>();
@@ -36,19 +37,21 @@ export class DropdownComponent {
 		document.removeEventListener('click', this.onDocumentClick.bind(this));
 	}
 
-	// Close dropdown when clicking outside of it
+	/**
+	 * Close dropdown when clicking outside of it	 *
+	 */
 	private onDocumentClick(event: MouseEvent): void {
 		if (
 			this.isDropdownOpen &&
 			!this.dropdown.nativeElement.contains(event.target)
 		) {
-			this.isDropdownOpen = false;
+			this.isDropdownOpen.set(false);
 		}
 	}
 
 	public selectOption(option: DropdownMenuItem): void {
 		this.value.set(option);
-		this.isDropdownOpen = false;
+		this.isDropdownOpen.set(false);
 		this.onSelect.emit(option);
 	}
 }
